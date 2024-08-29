@@ -210,7 +210,7 @@ export function Usermanage() {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>Admin Dashboard</BreadcrumbPage>
+                <BreadcrumbPage>User Management</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>

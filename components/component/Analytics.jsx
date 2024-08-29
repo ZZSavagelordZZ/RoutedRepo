@@ -238,8 +238,7 @@ export function Osp6() {
                     </CardHeader>
                     <CardContent>
                       <LineChart className="aspect-[4/3]" />
-                      <BarChart className="aspect-[4/3]" />
-                    </CardContent>
+                       </CardContent>
                   </Card>
                   <Card>
                     <CardHeader>
