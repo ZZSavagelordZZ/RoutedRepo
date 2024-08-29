@@ -76,7 +76,7 @@ export function Osp6() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  href="/AdminDash"
+                  href="/AdminDash/Analytics"
                   className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                   prefetch={false}>
                   <BarChartIcon className="h-5 w-5" />
@@ -165,7 +165,7 @@ export function Osp6() {
                   Payment and Billing
                 </Link>
                 <Link
-                  href="/AdminDash"
+                  href="/AdminDash/Analytics"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   prefetch={false}>
                   <BarChartIcon className="h-5 w-5" />
