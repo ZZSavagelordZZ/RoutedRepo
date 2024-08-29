@@ -20,7 +20,7 @@ To read more about using these font, please visit the Next.js documentation:
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { ResponsiveLine } from "@nivo/line"
 import { ResponsiveBar } from "@nivo/bar"
-
+/** 
 export function Osp6() {
   return (
     (<div className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -427,4 +427,4 @@ function LineChart(props) {
         role="application" />
     </div>)
   );
-}
+}*/
