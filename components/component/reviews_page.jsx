@@ -21,7 +21,7 @@ export function ReviewsPage() {
         </div>
         <nav className="flex flex-col gap-4">
           <Link
-            href="#"
+            href="/Rating_Reviews/recentrev"
             className="flex items-center gap-2 rounded-lg bg-accent p-2 text-accent-foreground"
             prefetch={false}
           >
@@ -29,7 +29,7 @@ export function ReviewsPage() {
             Recent Reviews
           </Link>
           <Link
-            href="#"
+            href="/Rating_Reviews/recentrating"
             className="flex items-center gap-2 rounded-lg bg-accent p-2 text-accent-foreground"
             prefetch={false}
           >
@@ -37,7 +37,7 @@ export function ReviewsPage() {
             Recent Ratings
           </Link>
           <Link
-            href="#"
+            href="/Rating_Reviews/mostrated"
             className="flex items-center gap-2 rounded-lg bg-accent p-2 text-accent-foreground"
             prefetch={false}
           >
