@@ -24,7 +24,7 @@ export function Homepage_v2() {
               Search
             </Link>
             <Link
-              href="#"
+              href="/Rating_Reviews"
               className="text-muted-foreground hover:text-primary-foreground transition-colors"
               >
               Ratings & Reviews
