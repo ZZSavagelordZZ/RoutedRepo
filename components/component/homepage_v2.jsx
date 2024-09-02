@@ -36,7 +36,7 @@ export function Homepage_v2() {
               My Bookings
             </Link>
             <Link
-              href="#"
+              href="/Accessibility"
               className="text-muted-foreground hover:text-primary-foreground px-3 py-2 rounded-md transition-colors"
               >
               Accessibility
@@ -47,7 +47,7 @@ export function Homepage_v2() {
         <div className="flex items-center gap-4">
         <DropdownMenu>
               <DropdownMenuTrigger
-                className="flex items-center gap-1 text-muted-foreground hover:text-foreground hover:text-primary-foreground transition-colors">
+                className="flex items-center gap-1 text-muted-foreground  hover:text-primary-foreground transition-colors">
                 <span>Language</span>
                 <ChevronDownIcon className="h-4 w-4" />
               </DropdownMenuTrigger>
@@ -84,7 +84,7 @@ export function Homepage_v2() {
                 <DropdownMenuItem><Link href="/User_Account">My Account</Link></DropdownMenuItem>
                 <DropdownMenuItem><Link href='/Settings'>Settings</Link></DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <DropdownMenuItem><Link href='/Login'>Logout</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
