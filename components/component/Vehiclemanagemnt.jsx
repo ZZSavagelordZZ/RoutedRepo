@@ -17,6 +17,7 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
+"use client"
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import Link from "next/link"
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
@@ -24,10 +25,19 @@ import { Button } from "@/components/ui/button"
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb"
 import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label"
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-
 export function Vehiclemanage() {
   return (
     (<div className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -241,6 +251,56 @@ export function Vehiclemanage() {
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="ml-auto">
+                <PlusIcon className="h-4 w-4 mr-2" />
+                Add Vehicle
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Add New Vehicle</DialogTitle>
+              </DialogHeader>
+              <div>
+                <form className="grid gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="model">Model</Label>
+                    <Input id="model" type="text" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="build">Build</Label>
+                    <Input id="build" type="text" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="kilometers">Kilometers Driven</Label>
+                    <Input id="kilometers" type="number" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="oil-check">Last Oil Check</Label>
+                    <Input id="oil-check" type="date" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="maintenance">Maintenance Status</Label>
+                    <Select id="maintenance">
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="due">Due</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </form>
+              </div>
+              <DialogFooter>
+                <div>
+                  <Button variant="ghost">Cancel</Button>
+                </div>
+                <Button>Save Vehicle</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </header>
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           <div className="grid gap-8">
@@ -275,7 +335,7 @@ export function Vehiclemanage() {
                         <Badge variant="secondary">Due</Badge>
                       </TableCell>
                       <TableCell>
-                        <DropdownMenu>
+                        <DropdownMenu onClose={() => console.log('Dropdown menu closed')}>
                           <DropdownMenuTrigger asChild>
                             <Button aria-haspopup="true" size="icon" variant="ghost">
                               <MenuIcon className="h-4 w-4" />
@@ -283,57 +343,66 @@ export function Vehiclemanage() {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Mark for Maintenance</DropdownMenuItem>
-                            <DropdownMenuItem>Update Details</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow id="vehicle-2">
-                      <TableCell className="font-medium">Honda Civic</TableCell>
-                      <TableCell>2018</TableCell>
-                      <TableCell>78,234 km</TableCell>
-                      <TableCell>2023-03-28</TableCell>
-                      <TableCell>
-                        <Badge variant="outline">Up to Date</Badge>
-                      </TableCell>
-                      <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button aria-haspopup="true" size="icon" variant="ghost">
-                              <MenuIcon className="h-4 w-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Mark for Maintenance</DropdownMenuItem>
-                            <DropdownMenuItem>Update Details</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow id="vehicle-3">
-                      <TableCell className="font-medium">Ford F-150</TableCell>
-                      <TableCell>2021</TableCell>
-                      <TableCell>32,456 km</TableCell>
-                      <TableCell>2023-05-01</TableCell>
-                      <TableCell>
-                        <Badge variant="outline">Up to Date</Badge>
-                      </TableCell>
-                      <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button aria-haspopup="true" size="icon" variant="ghost">
-                              <MenuIcon className="h-4 w-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Mark for Maintenance</DropdownMenuItem>
-                            <DropdownMenuItem>Update Details</DropdownMenuItem>
+                           <Dialog >
+                           <DropdownMenuItem onClick={(e) => e.preventDefault()}>
+                           <DialogTrigger  >
+                Update Vehicle
+                </DialogTrigger>
+              </DropdownMenuItem>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Update this Vehicle information</DialogTitle>
+              </DialogHeader>
+              <div>
+                <form className="grid gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="model">Model</Label>
+                    <Input id="model" type="text" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="build">Build</Label>
+                    <Input id="build" type="text" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="kilometers">Kilometers Driven</Label>
+                    <Input id="kilometers" type="number" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="oil-check">Last Oil Check</Label>
+                    <Input id="oil-check" type="date" />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="maintenance">Maintenance Status</Label>
+                    <Select id="maintenance">
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="due">Due</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </form>
+              </div>
+              <DialogFooter>
+                <div>
+                  <Button variant="ghost">Cancel</Button>
+                </div>
+                <Button>Save Vehicle</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+          <Dialog >
+                           <DropdownMenuItem onClick={(e) => e.preventDefault()}>
+                           <DialogTrigger >Delete Vehicle</DialogTrigger></DropdownMenuItem>
+                           <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Delete this Vehicle</DialogTitle></DialogHeader><div>Are you sure you want to delete this vehicle?</div> <DialogFooter>
+                <div>
+                  <Button variant="ghost">Cancel</Button>
+                </div>
+                <Button>Delete Vehicle</Button>
+              </DialogFooter></DialogContent></Dialog>
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </TableCell>
@@ -493,6 +562,24 @@ function MessageCircleIcon(props) {
       strokeLinecap="round"
       strokeLinejoin="round">
       <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+    </svg>)
+  );
+}
+function PlusIcon(props) {
+  return (
+    (<svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round">
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
     </svg>)
   );
 }
