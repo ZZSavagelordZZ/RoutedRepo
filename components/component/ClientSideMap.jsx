@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -55,7 +56,7 @@ const icons = {
   }),
 };
 
-const MapComponent = () => {
+const ClientSideMap = () => {
   const [position, setPosition] = useState(null);
   const [pointsOfInterest, setPointsOfInterest] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -160,6 +161,4 @@ const MapComponent = () => {
   );
 };
 
-export default MapComponent;
-
-
+export default ClientSideMap;

@@ -1,5 +1,5 @@
 import Mappage from "@/components/component/mapcomp";
 
-export default function cardetails() {
+export default function gg() {
   return <Mappage/>
 }
