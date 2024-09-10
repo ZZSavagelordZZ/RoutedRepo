@@ -2,6 +2,9 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useInView } from 'react-intersection-observer';
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 
 export function Goldhome() {
   const [ref1, inView1] = useInView({ threshold: 0.6, triggerOnce: true });
@@ -10,29 +13,84 @@ const [ref3, inView3] = useInView({ threshold: 0.3,triggerOnce: true });
   return (
     (<div className="flex flex-col min-h-[100dvh]">
       <header
-        className="bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between">
-        <Link href="#" className="flex items-center gap-2" prefetch={false}>
-          <CarIcon className="h-6 w-6" />
-          <span className="text-lg font-semibold">Golden Rentals</span>
-        </Link>
-        <nav className="hidden md:flex gap-6">
-          <Link href="#" className="hover:underline underline-offset-4" prefetch={false}>
-            Discover
+        className="sticky top-0 z-50 flex items-center justify-between h-9 px-4 md:px-6 border-b bg-primary text-primary-foreground  md:py-12">
+        <nav className=" md:flex gap-4 sm:gap-6">
+          <Link href="../" className="flex items-center gap-2" >
+            <CarIcon className="w-6 h-6 " />
+            <span className="text-lg font-semibold hover:text-primary-foreground transition-colors">Renta</span>
           </Link>
-          <Link href="#" className="hover:underline underline-offset-4" prefetch={false}>
-            Deals
-          </Link>
-          <Link href="#" className="hover:underline underline-offset-4" prefetch={false}>
-            Cars
-          </Link>
-          <Link href="#" className="hover:underline underline-offset-4" prefetch={false}>
-            Account
-          </Link>
+          <div className="hidden md:flex items-center gap-4">
+            <Link
+              href="/Search"
+              className="text-muted-foreground hover:text-primary-foreground transition-colors"
+              >
+              Search
+            </Link>
+            <Link
+              href="/Rating_Reviews"
+              className="text-muted-foreground hover:text-primary-foreground transition-colors"
+              >
+              Ratings & Reviews
+            </Link>
+            <Link
+              href="/Bookingdetail"
+              className="text-muted-foreground hover:text-primary-foreground transition-colors"
+              >
+              My Bookings
+            </Link>
+            <Link
+              href="/Accessibility"
+              className="text-muted-foreground hover:text-primary-foreground px-3 py-2 rounded-md transition-colors"
+              >
+              Accessibility
+            </Link>
+            
+          </div>
         </nav>
-        <Button variant="outline" size="sm" className="md:hidden">
-          <MenuIcon className="h-5 w-5" />
-          <span className="sr-only">Open menu</span>
-        </Button>
+        <div className="flex items-center gap-4">
+        <DropdownMenu>
+              <DropdownMenuTrigger
+                className="flex items-center gap-1 text-muted-foreground  hover:text-primary-foreground transition-colors">
+                <span>Language</span>
+                <ChevronDownIcon className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  <Link href="#" className="flex items-center gap-2" >
+                    <FlagIcon className="h-4 w-4" />
+                    <span>Türkçe</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="#" className="flex items-center gap-2" >
+                    <FlagIcon className="h-4 w-4" />
+                    <span>English</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="#" className="flex items-center gap-2" >
+                    <FlagIcon className="h-4 w-4" />
+                    <span>العربية</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="h-6 w-6 rounded-lg">
+                  <AvatarImage src="/placeholder-user.jpg" className="rounded-xl" />
+                  <AvatarFallback>JP</AvatarFallback>
+                  <span className="sr-only">Toggle user menu</span>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem><Link href="/User_Account">My Account</Link></DropdownMenuItem>
+                <DropdownMenuItem><Link href='/Settings'>Settings</Link></DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem><Link href='/Login'>Logout</Link></DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
       </header>
       <main className="flex-1">
         <section ref={ref1} className={`"bg-muted py-12 md:py-24 ${
@@ -231,9 +289,7 @@ function CarIcon(props) {
     </svg>)
   );
 }
-
-
-function MenuIcon(props) {
+function ChevronDownIcon(props) {
   return (
     (<svg
       {...props}
@@ -246,9 +302,24 @@ function MenuIcon(props) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round">
-      <line x1="4" x2="20" y1="12" y2="12" />
-      <line x1="4" x2="20" y1="6" y2="6" />
-      <line x1="4" x2="20" y1="18" y2="18" />
+      <path d="m6 9 6 6 6-6" />
+    </svg>)
+  );
+}function FlagIcon(props) {
+  return (
+    (<svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round">
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <line x1="4" x2="4" y1="22" y2="15" />
     </svg>)
   );
 }
