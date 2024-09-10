@@ -31,7 +31,7 @@ import { useInView } from 'react-intersection-observer';
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import Goldimage from '../ui/Gold_desk.png';
+import Goldimage from '../ui/GOLD_desk.png';
 export function Golden_Landing() {
   const [ref1, inView1] = useInView({ threshold: 0.6, triggerOnce: true });
 const [ref2, inView2] = useInView({ threshold: 0.6,triggerOnce: true  });
