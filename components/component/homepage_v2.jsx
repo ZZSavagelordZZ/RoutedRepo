@@ -1,12 +1,17 @@
-
+'use client'
 import Link from "next/link"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
+import { useInView } from 'react-intersection-observer';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import carImage from '../ui/car.png'; 
 export function Homepage_v2() {
+  const [ref1, inView1] = useInView({ threshold: 0.6, triggerOnce: true });
+const [ref2, inView2] = useInView({ threshold: 0.6,triggerOnce: true  });
+const [ref3, inView3] = useInView({ threshold: 0.3,triggerOnce: true });
+const [ref4, inView4] = useInView({ threshold: 0.3,triggerOnce: true });
   return (
     (<div className="flex flex-col min-h-dvh">
       <header
@@ -37,11 +42,16 @@ export function Homepage_v2() {
             </Link>
             <Link
               href="/Accessibility"
-              className="text-muted-foreground hover:text-primary-foreground px-3 py-2 rounded-md transition-colors"
+              className="text-muted-foreground hover:bg-[#003366] rounded-lg py-1 px-1 hover:text-[#ffffff] transition-colors"
               >
               Accessibility
             </Link>
-            
+            <Link
+              href="/Golden"
+              className="text-muted-foreground hover:bg-[#000000] rounded-lg py-1 px-1 hover:text-[#FFD700] transition-colors"
+              >
+              Golden Members
+            </Link>
           </div>
         </nav>
         <div className="flex items-center gap-4">
@@ -90,8 +100,9 @@ export function Homepage_v2() {
           </div>
       </header>
       <main className="flex-1">
-      <section
-       className="relative top-0 md:py-16 h-[400px] px-4 md:px-6 lg:px-10 bg-cover bg-center bg-no-repeat"
+      <section  ref={ref1}className={`relative top-0 md:py-16 h-[400px] px-4 md:px-6 lg:px-10 bg-cover bg-center bg-no-repeat ${
+        inView1 ? 'animate-fadeInUp' : 'opacity-0'
+       }`}
        style={{ backgroundImage: `url(${carImage.src})` }}
     >
       <div className="absolute top-0 left-[45vw] flex flex-col  gap-4 p-2 w-[45vw]">
@@ -113,7 +124,9 @@ export function Homepage_v2() {
     </section>
 
        
-        <section className="relative  w-full h-[400px] md:h-[500px] lg:h-[500px] overflow-hidden bg-muted">
+        <section ref={ref2 }className={`relative  w-full h-[400px] md:h-[500px] lg:h-[500px] overflow-hidden bg-muted ${
+        inView2 ? 'animate-fadeInUp' : 'opacity-0'
+       }`}>
           <div className="w-full mx-auto space-y-6 pt-5 pb-5 md:space-y-8 lg:space-y-10 bg-muted">
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">Special Offers</h2>
@@ -202,7 +215,8 @@ export function Homepage_v2() {
           </Carousel>
           
         </section>
-        <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-10 bg-primary">
+        <section ref={ref3 }className={`relative py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-10 bg-primary ${ 
+          inView3 ? 'animate-fadeInUp' : "opacity-0"}`}>
           <div className="max-w-3xl mx-auto space-y-6 md:space-y-8 lg:space-y-10">
             <div className="space-y-6 md:space-y-8">
               <div className="text-center">
@@ -256,7 +270,8 @@ export function Homepage_v2() {
             </div>
           </div>
         </section>
-        <section className="bg-muted py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-10">
+        <section ref={ref4 } className={`relative bg-muted py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-10 ${ 
+          inView4 ? 'animate-fadeInUp' : "opacity-0"}`}>
           <div className="max-w-10xl mx-auto space-y-6 md:space-y-8 lg:space-y-10">
             <div className="space-y-6 md:space-y-8">
               <div className="text-center">
